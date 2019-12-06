@@ -30,7 +30,7 @@ module.exports = {
                     { loader: 'css-loader', options: { sourceMap: isDev } },
                     { loader: 'sass-loader', options: { sourceMap: isDev } }
                 ],
-                include: path.resolve(__dirname, 'src', 'assets')
+                include: path.resolve('src', 'assets')
             },
             {
                 test: /\.(scss|sass)$/,
@@ -39,7 +39,7 @@ module.exports = {
                     { loader: 'css-loader', options: { sourceMap: isDev } },
                     { loader: 'sass-loader', options: { sourceMap: isDev } }
                 ],
-                include: path.resolve(__dirname, 'src', 'app')
+                include: path.resolve('src', 'app')
             },
             {
                 test: /\.css$/,

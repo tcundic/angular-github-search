@@ -1,23 +1,23 @@
 {
-    "compilerOptions": {
-      "target": "es5",
-      "module": "es2015",
-      "moduleResolution": "node",
-      "sourceMap": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "noImplicitAny": true,
-      "suppressImplicitAnyIndexErrors": true,
-      "typeRoots": [
-        "node_modules/@types"
-      ],
-      "lib": [
-        "es2017",
-        "dom"
-      ]
-    },
-    "exclude": [
-      "node_modules",
-      "src/main.aot.ts"
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
     ]
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "src/main.aot.ts"
+  ]
+}
