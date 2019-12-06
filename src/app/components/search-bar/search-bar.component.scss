@@ -1,0 +1,36 @@
+@import '../../../assets/styles/common';
+
+header {
+    flex: none;
+}
+
+#github-header {
+    background-color: $background-color-2;
+
+    & .search-container {
+        display: flex;
+        width: 100%;
+
+        & .logo {
+            margin-right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            object-fit: cover;
+        }
+
+        & .search-form {
+            flex-grow: 1;
+        }
+
+        & .search-bar {
+            flex-grow: 1;
+        }
+
+        & .search-btn {
+            font-size: 1.7em;
+            color: $github-color-1;
+            margin: auto;
+        }
+    }
+}

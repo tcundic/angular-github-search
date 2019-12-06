@@ -1,0 +1,14 @@
+<div class="col-sm-3">
+    <div class="card shadow">
+        <img src="{{item.avatar_url}}" alt="{{item.login}}" />
+        <div class="card-body">
+            <h5 class="card-title">{{item.login}}</h5>
+            <a [routerLink]="['/user-profile']">
+                <span class="btn btn-primary visit-profile-btn">View profile</span>
+            </a>
+                <!-- <Link to="/user-profile">
+                    <span onClick={() => onClick(login)} className="btn btn-primary visit-profile-btn">View profile</span>
+                </Link> -->
+        </div>
+    </div>
+</div>

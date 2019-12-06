@@ -46,8 +46,15 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(jpe?g|png|gif|svg|json)(\?[a-z0-9=.]+)?$/,
-                loader: 'url-loader?limit=100000'
+                test: /\.(jpe?g|png|gif|svg|json|ico)(\?[a-z0-9=.]+)?$/,
+                use: [
+                    {
+                        loader: 'url-loader?limit=100000',
+                        options: {
+                            esModule: false,
+                        },
+                    }
+                ]
             }
         ]
     },

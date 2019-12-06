@@ -1,0 +1,9 @@
+@import '../../../assets/styles/common';
+
+.search-results-container {
+    margin-top: 20px;
+
+    & .no-results {
+        color: $github-color-white;
+    }
+}
