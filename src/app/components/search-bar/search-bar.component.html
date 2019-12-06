@@ -1,0 +1,35 @@
+<header>
+    <nav id="github-header" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <div class="search-container">
+                <a [routerLink]="['/']">
+                    <img class="padding-1-l logo interactive" src="../../../assets/images/logo.ico" width="40" height="40" />
+                </a>
+                <form class="search-form form-inline">
+                    <!-- <input
+                        value={keyword}
+                        onChange={onChange}
+                        onKeyPress={(e) => {
+                            if (e.key === 'Enter') {
+                                e.preventDefault();
+                                searchBtn.current.click();
+                            }
+                        }}
+                        className="form-control form-control-sm mr-3 search-bar"
+                        type="text"
+                        placeholder="Search for Github user"
+                        aria-label="Search for Github user" /> -->
+                    <input
+                        class="form-control form-control-sm mr-3 search-bar"
+                        type="text"
+                        placeholder="Search for Github user"
+                        aria-label="Search for Github user" />
+                        <!-- <Link to='/'>
+                            <span className="mdi mdi-magnify search-btn interactive" ref={searchBtn} onClick={onClick}></span>
+                        </Link> -->
+                </form>
+                <span class="mdi mdi-magnify search-btn interactive"></span>
+            </div>
+        </div>
+    </nav>
+</header>

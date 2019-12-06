@@ -1,0 +1,18 @@
+@import '../../../node_modules/bootstrap/scss/_functions.scss';
+@import '../../../node_modules/bootstrap/scss/_variables.scss';
+@import '../../../node_modules/bootstrap/scss/mixins/_breakpoints.scss';
+
+$background-color-1: #0b0c10;
+$background-color-2: #1f2833;
+
+$github-color-1: #66fcf1;
+$github-color-2: #45a29e;
+$github-color-white: #ffffff;
+
+.interactive {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold !important;
+}
