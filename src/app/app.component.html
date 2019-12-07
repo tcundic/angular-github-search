@@ -1,6 +1,5 @@
 <div class="body">
-    <app-search-bar></app-search-bar>
-                    <!-- <SearchBar keyword={this.state.searchKeyword} onChange={(keyword) => this.onSearchKeywordChange(keyword)} onClick={() => this.onSearchBtnClick()}/> -->
+    <app-search-bar (doSearch)="onDoSearch($event)"></app-search-bar>
                     <!-- <Spinner /> -->
     <div class="page-content page-content--full">
         <router-outlet></router-outlet>
