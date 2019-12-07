@@ -3,12 +3,9 @@
         <img src="{{item.avatar_url}}" alt="{{item.login}}" />
         <div class="card-body">
             <h5 class="card-title">{{item.login}}</h5>
-            <a [routerLink]="['/user-profile']">
+            <a [routerLink]="['/user-profile', item.login]">
                 <span class="btn btn-primary visit-profile-btn">View profile</span>
-            </a>
-                <!-- <Link to="/user-profile">
-                    <span onClick={() => onClick(login)} className="btn btn-primary visit-profile-btn">View profile</span>
-                </Link> -->
+            </a>>
         </div>
     </div>
 </div>

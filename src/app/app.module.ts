@@ -9,13 +9,17 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchResultsItemComponent } from './components/search-results-item/search-results-item.component';
 import { GithubSearchService } from './services/github-search-service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchBarComponent,
     SearchResultsComponent,
-    SearchResultsItemComponent
+    SearchResultsItemComponent,
+    UserProfileComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
