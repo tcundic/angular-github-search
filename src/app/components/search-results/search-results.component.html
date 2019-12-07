@@ -1,4 +1,5 @@
 <div class="page-content container search-results-container">
+    <app-loading-spinner *ngIf="isLoading()"></app-loading-spinner>
     <div class="row">
         <ng-container *ngFor="let r of results">
             <app-search-results-item [item]="r"></app-search-results-item>

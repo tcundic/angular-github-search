@@ -23,10 +23,13 @@ export class GithubSearchService {
     private SINGLE_USER_API = 'users';
     
     private searchResults: BehaviorSubject<User[]> = new BehaviorSubject([]);
+    private userProfile: BehaviorSubject<User> = new BehaviorSubject(null);
+    private loading: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   public findUser(keyword: string): BehaviorSubject<User[]> {
+      this.loading = true;
       const apiUrl = `${this.GITHUB_API}/${this.SEARCH_USERS_API}${keyword}`;
       this.http.get(apiUrl)
       .pipe(map((res: any) => {
@@ -44,7 +47,13 @@ export class GithubSearchService {
                 );
             });
         })).subscribe((users: User[]) => {
+            this.loading = false;
             this.searchResults.next(users);
+        },
+        (error: any) => {
+            console.warn('Error while getting search results: ', error);
+            this.loading = false;
+            this.searchResults.next([]);
         });
         return this.searchResults;
   }
@@ -54,8 +63,41 @@ export class GithubSearchService {
   }
 
   public removeSearchResults(): void {
-      console.log('OK');
       this.searchResults.next([]);
+  }
+  
+  public fetchUserProfile(username: string): BehaviorSubject<User> {
+    this.userProfile.next(null);
+    this.loading = true;
+
+    const apiUrl = `${this.GITHUB_API}/${this.SINGLE_USER_API}/${username}`;
+    this.http.get(apiUrl).subscribe((res: any) => {
+        let user = new User(
+            res.login,
+            res.avatar_url,
+            res.name,
+            res.email,
+            res.bio,
+            res.html_url,
+            res.followers,
+            res.following,
+            res.public_repos
+        );
+
+        this.loading = false;
+        this.userProfile.next(user);
+    },
+    (error: any) => {
+        console.warn('Error during fetching user profile: ', error);
+        this.loading = false;
+        this.userProfile.next(null);
+    });
+    
+    return this.userProfile;
+  }
+
+  public isLoading(): boolean {
+      return this.loading;
   }
 }
 

@@ -13,9 +13,9 @@ export class AppComponent {
   constructor(private githubService: GithubSearchService) {}
 
   public onDoSearch(searchTerm: string) {
-    if (searchTerm === '') {
-      this.githubService.removeSearchResults();
-    } else {
+    this.githubService.removeSearchResults();
+
+    if (searchTerm !== '') {
       this.githubService.findUser(searchTerm);
     }
   }

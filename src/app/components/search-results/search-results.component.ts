@@ -23,6 +23,10 @@ export class SearchResultsComponent implements AfterViewInit, OnDestroy {
     });   
   }
 
+  public isLoading(): boolean {
+    return this.githubService.isLoading();
+  }
+
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
     this.userSubscription = null;
