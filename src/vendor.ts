@@ -11,5 +11,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 
+// PrimeNG data table
+import 'primeicons/primeicons.css';
+import 'primeng/resources/primeng.min.css';
+
 // RxJS
 import 'rxjs';

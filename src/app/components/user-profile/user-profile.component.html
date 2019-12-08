@@ -1,0 +1,81 @@
+<div class="user-profile container mt-4 mb-5">
+    <app-loading-spinner *ngIf="isLoading()"></app-loading-spinner>
+    <div class="card shadow p-4">
+        <div class="row">
+            <div class="col-md-3 mr-3 profile-picture">
+                <img src="{{user?.avatar_url}}" />
+            </div>
+            <div class="col-md-8 profile-details">
+                <div class="user-name">
+                    <h1>{{user?.name}}</h1>
+                </div>
+                <div class="username-email">
+                    <h4><small class="mr-5">@{{user?.login}}</small><small>{{user?.email !== null ? user.email : 'Email not available'}}</small></h4>
+                </div>
+                <div class="date-joined">
+                    <h4><small class="mr-5">Date joined: {{user?.date_joined | date: 'dd.MM.yyyy'}}</small></h4>
+                </div>
+                <div class="bio mt-2">
+                    {{user?.bio}}
+                </div>
+                <div class="profile-buttons">
+                    <a href="{{user?.html_url}}" target="_blank"><span class="btn btn-primary open-github-profile mr-3">Open Github profile</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="row user-numbers mt-5">
+            <div class="followers statistic-container mt-4 bold mb-4 right-vertical-divider">
+                <div class="number">{{user?.followers}}</div>
+                <div class="caption">Followers</div>
+            </div>
+            <div class="following statistic-container bold mt-4 mb-4">
+                <div class="number">{{user?.following}}</div>
+                <div class="caption">Following</div>
+            </div>
+            <div class="repositories statistic-container bold mt-4 mb-4 left-vertical-divider">
+                <div class="number">{{user?.public_repos}}</div>
+                <div class="caption">Repositories</div>
+            </div>
+        </div>
+    </div>
+    <p-table #dt
+        [columns]="cols"
+        [value]="followers"
+        [lazy]="true"
+        (onLazyLoad)="loadDataLazy($event)"
+        [totalRecords]="user?.followers"
+        (onPage)="pageChange($event)"
+        [rows]="10"
+        [paginator]="true"
+        selectionMode="single"
+        [autoLayout]="true"
+        [responsive]="true">
+        <ng-template pTemplate="caption">
+            {{user?.name}}'s followers
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    <ng-container [ngSwitch]="col.field">
+                        <a *ngSwitchCase="'html_url'" href="{{rowData[col.field]}}" target="_blank">
+                            <span class="btn btn-primary open-repository-btn">Open repository</span>
+                        </a>
+                        <span *ngSwitchDefault>
+                            {{rowData[col.field]}}
+                        </span>
+                    </ng-container>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            {{tableSummary}}
+        </ng-template>
+    </p-table>
+</div>
