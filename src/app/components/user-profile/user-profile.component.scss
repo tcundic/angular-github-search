@@ -1,0 +1,194 @@
+@import '../../../assets/styles/common.scss';
+
+.user-profile {
+    & .card {
+        border-radius: 2px;
+        margin: 10px 0;
+        background-color: $background-color-2;
+    }
+
+    & .profile-picture {
+        & img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    & .profile-details {
+        display: flex;
+        flex-direction: column;
+
+        & .user-name {
+            color: $github-color-1;
+
+            & h1 {
+                margin-bottom: 0;
+            }
+        }
+
+        & .username-email {
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: 24px;
+            color: $github-color-2;
+            font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+
+            & small {
+                vertical-align: top;
+            }
+        }
+
+        & .bio {
+            color: $github-color-white;
+            font-weight: 500;
+        }
+
+        & .date-joined {
+            color: $github-color-white;
+        }
+
+        & .profile-buttons {
+            margin-top: auto;
+
+            & .btn.btn-primary {
+                background-color: inherit;
+                border-color: $github-color-1;
+
+                &:active {
+                    background-color: $github-color-2;
+                }
+            }
+        }
+    }
+
+    & .user-numbers {
+        color: $github-color-white;
+        display: flex;
+        border-top: 2px solid #888;
+        border-bottom: 2px solid #888;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: space-around;
+
+        & .statistic-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & .number {
+                font-size: 4em;
+            }
+
+            & .caption {
+                font-size: 1.5em;
+            }
+        }
+
+        &.left-vertical-divider {
+            border-left: 2px solid #888;
+            padding-left: 6em;
+        }
+
+        &.right-vertical-divider {
+            border-right: 2px solid #888;
+            padding-right: 6em;
+        }
+    }
+}
+
+:host::ng-deep .ui-table-caption {
+    color: #66fcf1;
+    font-size: 2.5rem;
+    text-align: left;
+    font-weight: normal;
+}
+
+:host::ng-deep .ui-table-wrapper table {
+    border: 1px solid $github-color-3;
+
+    & .ui-table-thead {
+        background-color: $background-color-2;
+        color: $github-color-white;
+
+        & th {
+            border: 1px solid $github-color-3;
+            border-bottom: 2px solid;
+        }
+    }
+
+    & .ui-table-tbody {
+        & td {
+            border: 1px solid $github-color-3;
+            padding: .75rem;
+            vertical-align: top;
+            color: $github-color-white;
+        }
+
+        & .open-repository-btn {
+            background-color: inherit;
+            border-color: #66fcf1;
+
+            &:active {
+                background-color: $github-color-active;
+            }
+        }
+    }
+
+}
+
+:host::ng-deep .ui-paginator-bottom {
+    display: flex;
+    padding-left: 0;
+    border-radius: .25rem;
+    justify-content: center;
+    margin-top: 20px;
+
+    & .ui-paginator-pages {
+        display: flex;
+        border-radius: .25rem;
+
+    }
+            
+    & .ui-paginator-page,
+    & .ui-paginator-first,
+    & .ui-paginator-prev,
+    & .ui-paginator-last,
+    & .ui-paginator-next {
+        position: relative;
+        display: block;
+        padding: .5rem .75rem;
+        margin-left: -1px;
+        line-height: 20px;
+        color: inherit;
+        background-color: $github-color-white;
+        border: 1px solid $github-color-3;
+        height: 38px;
+        margin-right: 0;
+    }
+
+    & .ui-paginator-first {
+        border-top-left-radius: .25rem;
+        border-bottom-left-radius: .25rem;
+    }
+
+    & .ui-paginator-last {
+        border-top-right-radius: .25rem;
+        border-bottom-right-radius: .25rem;
+    }
+
+    & .ui-state-disabled {
+        color: $github-color-disabled;
+    }
+
+    & .ui-state-active {
+        color: $github-color-white;
+        background-color: $github-color-active;
+        border-color: $github-color-active;
+    }
+}
+
+:host::ng-deep .ui-table-summary {
+    color: $github-color-white;
+    font-weight: normal;
+}

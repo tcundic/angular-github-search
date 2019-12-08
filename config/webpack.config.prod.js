@@ -13,7 +13,7 @@ module.exports = webpackMerge(commonConfig, {
     mode: 'production',
 
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve('dist'),
         publicPath: '/',
         filename: '[hash].js',
         chunkFilename: '[id].[hash].chunk.js'
@@ -26,10 +26,10 @@ module.exports = webpackMerge(commonConfig, {
         },
         runtimeChunk: 'single',
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true
-            }),
+            // new UglifyJsPlugin({
+            //     cache: true,
+            //     parallel: true
+            // }),
 
             new OptimizeCSSAssetsPlugin({
                 cssProcessor: cssnano,
@@ -54,7 +54,7 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
         new ngw.AngularCompilerPlugin({
-            tsConfigPath: path.resolve(__dirname, 'tsconfig.aot.json'),
+            tsConfigPath: path.resolve('tsconfig.aot.json'),
             entryModule: path.resolve(__dirname, 'src', 'app', 'app.module#AppModule')
         })
     ]

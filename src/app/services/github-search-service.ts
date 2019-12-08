@@ -13,7 +13,8 @@ export class User {
                 public html_url: string,
                 public followers: number,
                 public following: number,
-                public public_repos: number) {}
+                public public_repos: number,
+                public date_joined: Date) {}
 }
 
 @Injectable()
@@ -21,9 +22,12 @@ export class GithubSearchService {
     private GITHUB_API = 'https://api.github.com';
     private SEARCH_USERS_API = 'search/users?per_page=10&q=';
     private SINGLE_USER_API = 'users';
+    private FOLLOWERS_API = 'followers';
     
     private searchResults: BehaviorSubject<User[]> = new BehaviorSubject([]);
     private userProfile: BehaviorSubject<User> = new BehaviorSubject(null);
+    private userFollowers: BehaviorSubject<User[]> = new BehaviorSubject([]);
+
     private loading: boolean = false;
 
   constructor(private http: HttpClient) {}
@@ -43,7 +47,8 @@ export class GithubSearchService {
                     item.html_url,
                     item.followers,
                     item.following,
-                    item.public_repos
+                    item.public_repos,
+                    item.created_at
                 );
             });
         })).subscribe((users: User[]) => {
@@ -81,7 +86,8 @@ export class GithubSearchService {
             res.html_url,
             res.followers,
             res.following,
-            res.public_repos
+            res.public_repos,
+            res.created_at
         );
 
         this.loading = false;
@@ -98,6 +104,37 @@ export class GithubSearchService {
 
   public isLoading(): boolean {
       return this.loading;
+  }
+
+  public getFollowers(user: string, page: number, numberOfRows: number): BehaviorSubject<User[]> {
+    this.loading = true;
+    const apiUrl = `${this.GITHUB_API}/${this.SINGLE_USER_API}/${user}/${this.FOLLOWERS_API}?per_page=${numberOfRows}&page=${page}`;
+    this.http.get(apiUrl)
+    .pipe(map((res: any) => {
+          return res.map((item: any) => {
+              return new User(
+                  item.login,
+                  item.avatar_url,
+                  item.name,
+                  item.email,
+                  item.bio,
+                  item.html_url,
+                  item.followers,
+                  item.following,
+                  item.public_repos,
+                  item.created_at
+              );
+          });
+      })).subscribe((users: User[]) => {
+          this.loading = false;
+          this.userFollowers.next(users);
+      },
+      (error: any) => {
+          console.warn('Error while getting search results: ', error);
+          this.loading = false;
+          this.userFollowers.next([]);
+      });
+      return this.userFollowers;
   }
 }
 
